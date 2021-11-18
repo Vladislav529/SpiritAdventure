@@ -39,7 +39,7 @@ public class CharacterMovement : MonoBehaviour
     {
         float yAxis = Input.GetAxis("Vertical");
 
-        float xAxis = Input.GetAxis("Horizontal"); // �������� a d;
+        float xAxis = Input.GetAxis("Horizontal"); 
 
         if (!PlantClimb.isClimbing)
         {
@@ -86,13 +86,11 @@ public class CharacterMovement : MonoBehaviour
 
         if (grounded || PlantClimb.isClimbing)
         {
-            Debug.LogWarning("is grounded");
             animator.SetBool(isGrounded, true);
         }
 
         else
         {
-            Debug.LogWarning("is jumping");
             animator.SetBool(isGrounded, false);
         }
 
