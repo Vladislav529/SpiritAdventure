@@ -2,16 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class holdingObject : MonoBehaviour
+public class holdingObject : MonoBehaviour, IInteractableObject
 {
     [Header("Set in Inspector")]
     // public GameObject thingWeHold;
-    public GameObject character;
+    public CharacterMovement character;
     public GameObject hand;
+    public float pickUpDistance = 10f;
+
+
+    private bool isPickedUp = false;
+
+    Rigidbody2D rigidbody;
+
+    public void Interaction()
+    {
+        this.transform.SetParent(hand.transform);
+    }
+
+    public Vector3 position => this.transform.position;
 
     private void Update()
     {
-        transform.position = hand.transform.position;
+
+        if (Vector3.Distance(hand.transform.position, transform.position) <= pickUpDistance)
+        {
+            character.AddInteractableObject(this);
+        }
+        else
+        {
+            character.TryToRemoveInteractableObject(this);
+        }
+        
     }
 
+}
+
+
+public interface IInteractableObject
+{
+    void Interaction();
+
+    Vector3 position { get; }
 }
