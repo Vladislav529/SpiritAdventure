@@ -11,7 +11,6 @@ using UnityEngine.Audio; //Работа с аудио
 public class Options : BaseWindow
 {
     public float volume = 0; //Громкость
-    public int quality = 0; //Качество
     public bool isFullscreen = false; //Полноэкранный режим
 	private int currResolutionIndex = 0; //Текущее разрешение
 
@@ -30,14 +29,10 @@ public class Options : BaseWindow
     {
         currResolutionIndex = index;
     }
-    public void ChangeFullscreenMode(bool val) //Включение или отключение полноэкранного режима
-    {
-        isFullscreen = val;
-    }
-    public void ChangeQuality(int index) //Изменение качества
-    {
-        quality = index;
-    }
+	public void ChangeFullscreenMode(bool val) //Включение или отключение полноэкранного режима
+	{
+		isFullscreen = val;
+	}
 
 	public override void Awake()
 	{
@@ -58,7 +53,6 @@ public class Options : BaseWindow
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file = File.Create(Application.persistentDataPath + "/Settings.dat");
 		SaveData data = new SaveData();
-		data.savedQuality = quality;
 		data.savedResolution = currResolutionIndex;
 		data.savedVolume = volume;
 		data.savedFullscreen = isFullscreen;
@@ -75,12 +69,10 @@ public class Options : BaseWindow
 			FileStream file = File.Open(Application.persistentDataPath + "/Settings.dat", FileMode.Open);
 			SaveData data = (SaveData)bf.Deserialize(file);
 			file.Close();
-			quality = data.savedQuality;
 			currResolutionIndex = data.savedResolution;
 			volume = data.savedVolume;
 			isFullscreen = data.savedFullscreen;
 			audioMixer.SetFloat("Volume", volume); //Изменение уровня громкости
-			QualitySettings.SetQualityLevel(quality); //Изменение качества
 			Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
 			Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
 			Debug.Log("Game data loaded!");
@@ -95,7 +87,6 @@ public class Options : BaseWindow
 [Serializable]
 public class SaveData
 {
-	public int savedQuality;
 	public int savedResolution;
 	public float savedVolume;
 	public bool savedFullscreen;
