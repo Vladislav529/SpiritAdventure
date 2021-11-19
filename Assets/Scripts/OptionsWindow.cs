@@ -86,6 +86,9 @@ public class OptionsWindow : BaseWindow
 		PlayerPrefs.SetFloat("volume", volume);
 		PlayerPrefs.Save();
 		Debug.Log("Game data saved!");
+<<<<<<< HEAD
+>>>>>>> parent of fec0c56 (Options FIx)
+=======
 >>>>>>> parent of fec0c56 (Options FIx)
 	}
 }
