@@ -169,12 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4706053094060729788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36ba04d777ec134f853a51bbe54c12b, type: 3}
+  m_Script: {fileID: 11500000, guid: d947602a62c20044cb9ee734f552a9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
   menuButton: {fileID: 3655690945033274071}
-  exitButton: {fileID: 3655690945033274071}
+  exitButton: {fileID: 2171086265536950897}
 --- !u!1 &5914767062831770225
 GameObject:
   m_ObjectHideFlags: 0
