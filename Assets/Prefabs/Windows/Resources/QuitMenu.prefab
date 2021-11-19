@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
   menuButton: {fileID: 3655690945033274071}
-  exitButton: {fileID: 3655690945033274071}
+  exitButton: {fileID: 2171086265536950897}
 --- !u!1 &5914767062831770225
 GameObject:
   m_ObjectHideFlags: 0

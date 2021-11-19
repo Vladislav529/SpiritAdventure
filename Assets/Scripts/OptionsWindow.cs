@@ -64,7 +64,11 @@ public class OptionsWindow : BaseWindow
 		}
 		PlayerPrefs.SetFloat("volume", volume);
 		PlayerPrefs.Save();
-		Debug.Log("Game data saved!");
+
+		audioMixer.SetFloat("MasterVolume", volume); //Изменение уровня громкости
+		Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
+		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
+	Debug.Log("Game data saved!");
 	}
 
 	public void LoadSettings()
@@ -72,10 +76,15 @@ public class OptionsWindow : BaseWindow
 		currResolutionIndex = PlayerPrefs.GetInt("currResolutionIndex", currResolutionIndex);
 		isFullscreen = PlayerPrefs.HasKey("isFullscreen");
 		volume = PlayerPrefs.GetFloat("volume", volume);
+
 		dropdown.value = currResolutionIndex;
 		toggle.isOn = isFullscreen;
 		slider.value = volume;
-		Debug.Log("Game data loaded!");
+
+		audioMixer.SetFloat("MasterVolume", volume); //Изменение уровня громкости
+		Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
+		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
+	Debug.Log("Game data loaded!");
 	}
 }
 
