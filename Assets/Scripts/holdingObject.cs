@@ -47,13 +47,17 @@ public abstract class InteractableObject : MonoBehaviour
     {
         
         var distanceWithCharacter = Vector3.Distance(character.transform.position, transform.position);
-        if (distanceWithCharacter <= pickUpDistance && !_characterCanInteract)
+        if (distanceWithCharacter <= pickUpDistance)
         {
+            if (_characterCanInteract)
+                return;
             _characterCanInteract = true;
             character.AddInteractableObject(this);
         }
         else
         {
+            if (!_characterCanInteract)
+                return;
             _characterCanInteract = false;
             character.TryToRemoveInteractableObject(this);
         }
