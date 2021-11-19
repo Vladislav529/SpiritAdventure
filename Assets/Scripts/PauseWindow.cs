@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class PauseWindow : BaseWindow
 {
-	public Button startButton;
+	public Button continueButton;
+	public Button loadButton;
 	public Button optionsButton;
 	public Button quitButton;
 
@@ -14,16 +15,21 @@ public class PauseWindow : BaseWindow
 	public override void Awake()
 	{
 		base.Awake();
-		startButton.onClick.AddListener(StartGame);
+		continueButton.onClick.AddListener(ContinueGame);
+		loadButton.onClick.AddListener(LoadGame);
 		optionsButton.onClick.AddListener(ShowOptions);
 		quitButton.onClick.AddListener(QuitGame);
 	}
 
-	private void StartGame()
+	private void ContinueGame()
 	{
 		SceneManager.LoadScene("Game", LoadSceneMode.Additive); // LoadSceneMode.Additive
 		_windowManager.CloseAllWindow(this);
 	}
+	private void LoadGame()
+    {
+		return; // Õ¿œ»—¿“‹
+    }
 	private void ShowOptions()
 	{
 		_windowManager.ShowWindow("OptionsMenu");
