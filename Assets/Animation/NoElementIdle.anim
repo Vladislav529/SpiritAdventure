@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jump
+  m_Name: NoElementIdle
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 6874995bf66abca48a788fb95f360a5f, type: 3}
+<<<<<<< Updated upstream:Assets/Animation/Jump.anim
+      value: {fileID: 21300000, guid: 52ecdb084e353e949a40bd550219de07, type: 3}
+=======
+      value: {fileID: 21300000, guid: 5d7cef8fc45269c4788486c8063ef87a, type: 3}
+    - time: 1
+      value: {fileID: 0}
+>>>>>>> Stashed changes:Assets/Animation/NoElementIdle.anim
     attribute: m_Sprite
-    path: character
+    path: 
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -33,20 +39,25 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2474291252
+      path: 0
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 6874995bf66abca48a788fb95f360a5f, type: 3}
+<<<<<<< Updated upstream:Assets/Animation/Jump.anim
+    - {fileID: 21300000, guid: 52ecdb084e353e949a40bd550219de07, type: 3}
+=======
+    - {fileID: 21300000, guid: 5d7cef8fc45269c4788486c8063ef87a, type: 3}
+    - {fileID: 0}
+>>>>>>> Stashed changes:Assets/Animation/NoElementIdle.anim
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 1.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
