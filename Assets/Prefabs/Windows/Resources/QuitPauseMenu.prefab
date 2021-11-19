@@ -129,9 +129,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3279782684427940211}
-  - component: {fileID: 7366060632822273297}
+  - component: {fileID: 6172909563352032475}
   m_Layer: 0
-  m_Name: QuitMenu
+  m_Name: QuitPauseMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,7 +160,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7366060632822273297
+--- !u!114 &6172909563352032475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,12 +169,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4706053094060729788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36ba04d777ec134f853a51bbe54c12b, type: 3}
+  m_Script: {fileID: 11500000, guid: e8a3de6193307864397058fdab4d2313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
   menuButton: {fileID: 3655690945033274071}
-  exitButton: {fileID: 3655690945033274071}
+  exitButton: {fileID: 2171086265536950897}
 --- !u!1 &5914767062831770225
 GameObject:
   m_ObjectHideFlags: 0

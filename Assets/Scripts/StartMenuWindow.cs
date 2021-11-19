@@ -22,7 +22,6 @@ public class StartMenuWindow : BaseWindow
 	private void StartGame()
 	{
 		SceneManager.LoadScene("Game"); // LoadSceneMode.Additive
-		_windowManager.CloseAllWindow(this);
 	}
 	private void ShowOptions()
 	{
