@@ -659,6 +659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a97b1c25551aa459dc77e5e5cb60c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 1477683605}
+  pickUpDistance: 10
+  hand: {fileID: 0}
 --- !u!212 &415899254
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2608,6 +2611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a97b1c25551aa459dc77e5e5cb60c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 1477683605}
+  pickUpDistance: 10
+  hand: {fileID: 0}
 --- !u!212 &1922295180
 SpriteRenderer:
   m_ObjectHideFlags: 0
