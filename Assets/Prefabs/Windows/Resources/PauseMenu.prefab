@@ -634,9 +634,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 0}
-  startButton: {fileID: 0}
-  optionsButton: {fileID: 0}
-  quitButton: {fileID: 0}
+  continueButton: {fileID: 4998021272741210454}
+  loadButton: {fileID: 778835040684863953}
+  optionsButton: {fileID: 905948883081709702}
+  quitButton: {fileID: 3997274792613367640}
 --- !u!1 &6037208576438691620
 GameObject:
   m_ObjectHideFlags: 0

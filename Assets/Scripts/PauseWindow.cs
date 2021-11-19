@@ -23,8 +23,7 @@ public class PauseWindow : BaseWindow
 
 	private void ContinueGame()
 	{
-		SceneManager.LoadScene("Game", LoadSceneMode.Additive); // LoadSceneMode.Additive
-		_windowManager.CloseAllWindow(this);
+		_windowManager.CloseWindow(this);
 	}
 	private void LoadGame()
     {
@@ -36,6 +35,6 @@ public class PauseWindow : BaseWindow
 	}
 	private void QuitGame()
 	{
-		_windowManager.ShowWindow("QuitMenu");
+		_windowManager.ShowWindow("QuitPauseMenu");
 	}
 }
