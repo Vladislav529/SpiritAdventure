@@ -10,7 +10,7 @@ public class WindowManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && openedWindows.Count > 0)
         {
             CloseWindow(openedWindows[openedWindows.Count - 1]);
         }
