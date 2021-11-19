@@ -1,35 +1,39 @@
-using System;
+п»їusing System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //Работа с интерфейсами
-using UnityEngine.SceneManagement; //Работа со сценами
-using UnityEngine.Audio; //Работа с аудио
+using UnityEngine.UI; //Р Р°Р±РѕС‚Р° СЃ РёРЅС‚РµСЂС„РµР№СЃР°РјРё
+using UnityEngine.SceneManagement; //Р Р°Р±РѕС‚Р° СЃРѕ СЃС†РµРЅР°РјРё
+using UnityEngine.Audio; //Р Р°Р±РѕС‚Р° СЃ Р°СѓРґРёРѕ
 
 public class OptionsWindow : BaseWindow
 {
-    public float volume = 0; //Громкость
-    public bool isFullscreen = false; //Полноэкранный режим
-	private int currResolutionIndex = 0; //Текущее разрешение
+    public float volume = 0; //Р“СЂРѕРјРєРѕСЃС‚СЊ
+    public bool isFullscreen = false; //РџРѕР»РЅРѕСЌРєСЂР°РЅРЅС‹Р№ СЂРµР¶РёРј
+	public int currResolutionIndex = 0; //РўРµРєСѓС‰РµРµ СЂР°Р·СЂРµС€РµРЅРёРµ
 
-	public AudioMixer audioMixer; //Регулятор громкости
-    public Dropdown resolutionDropdown; //Список с разрешениями для игры
-    private Resolution[] resolutions; //Список доступных разрешений
+	public AudioMixer audioMixer; //Р РµРіСѓР»СЏС‚РѕСЂ РіСЂРѕРјРєРѕСЃС‚Рё
+    public Dropdown resolutionDropdown; //РЎРїРёСЃРѕРє СЃ СЂР°Р·СЂРµС€РµРЅРёСЏРјРё РґР»СЏ РёРіСЂС‹
+    private Resolution[] resolutions; //РЎРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… СЂР°Р·СЂРµС€РµРЅРёР№
+
+	public Toggle toggle;
+	public Dropdown dropdown;
+	public Slider slider;
 
 	public Button saveButton;
 	public Button exitButton;
 
-	public void ChangeVolume(float val) //Изменение звука
+	public void ChangeVolume(float val) //РР·РјРµРЅРµРЅРёРµ Р·РІСѓРєР°
     {
         volume = val;
     }
-    public void ChangeResolution(int index) //Изменение разрешения
+    public void ChangeResolution(int index) //РР·РјРµРЅРµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ
     {
         currResolutionIndex = index;
     }
-	public void ChangeFullscreenMode(bool val) //Включение или отключение полноэкранного режима
+	public void ChangeFullscreenMode(bool val) //Р’РєР»СЋС‡РµРЅРёРµ РёР»Рё РѕС‚РєР»СЋС‡РµРЅРёРµ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅРѕРіРѕ СЂРµР¶РёРјР°
 	{
 		isFullscreen = val;
 	}
@@ -50,124 +54,97 @@ public class OptionsWindow : BaseWindow
 
 	public void SaveSettings()
 	{
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath + "/Settings.dat");
-		SaveData data = new SaveData();
-		data.savedResolution = currResolutionIndex;
-		data.savedVolume = volume;
-		data.savedFullscreen = isFullscreen;
-		bf.Serialize(file, data);
-		file.Close();
-		Debug.Log("Game data saved!");
-	}
-
-	public void LoadSettings()
-	{
-		if (File.Exists(Application.persistentDataPath + "/Settings.dat"))
+		PlayerPrefs.SetInt("currResolutionIndex", currResolutionIndex);
+		if (isFullscreen)
 		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/Settings.dat", FileMode.Open);
-			SaveData data = (SaveData)bf.Deserialize(file);
-			file.Close();
-			currResolutionIndex = data.savedResolution;
-			volume = data.savedVolume;
-			isFullscreen = data.savedFullscreen;
-			audioMixer.SetFloat("Volume", volume); //Изменение уровня громкости
-			Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
-			Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
-			Debug.Log("Game data loaded!");
+			PlayerPrefs.SetInt("isFullscreen", 1);
 		}
 		else
-        {
-			Debug.LogError("There is no save data!");
+		{
+			PlayerPrefs.DeleteKey("isFullscreen");
 		}
-<<<<<<< HEAD
-=======
 		PlayerPrefs.SetFloat("volume", volume);
 		PlayerPrefs.Save();
-		Debug.Log("Game data saved!");
-<<<<<<< HEAD
->>>>>>> parent of fec0c56 (Options FIx)
-=======
->>>>>>> parent of fec0c56 (Options FIx)
-	}
-}
 
-<<<<<<< HEAD
-[Serializable]
-public class SaveData
-{
-	public int savedResolution;
-	public float savedVolume;
-	public bool savedFullscreen;
-=======
+		audioMixer.SetFloat("MasterVolume", volume); 
+		Screen.fullScreen = isFullscreen; 
+		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); 
+
+		Debug.Log("Game data saved!");
+	}
+
 	public void LoadSettings()
 	{
 		currResolutionIndex = PlayerPrefs.GetInt("currResolutionIndex", currResolutionIndex);
 		isFullscreen = PlayerPrefs.HasKey("isFullscreen");
 		volume = PlayerPrefs.GetFloat("volume", volume);
+
 		dropdown.value = currResolutionIndex;
 		toggle.isOn = isFullscreen;
 		slider.value = volume;
+
+		audioMixer.SetFloat("MasterVolume", volume); 
+		Screen.fullScreen = isFullscreen; 
+		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); 
+
 		Debug.Log("Game data loaded!");
 	}
->>>>>>> parent of fec0c56 (Options FIx)
 }
 
 //public class Options2 : BaseWindow
 //{
-//	public float volume = 0; //Громкость
-//	public int quality = 0; //Качество
-//	public bool isFullscreen = false; //Полноэкранный режим
-//	public AudioMixer audioMixer; //Регулятор громкости
-//	public Dropdown resolutionDropdown; //Список с разрешениями для игры
-//	private Resolution[] resolutions; //Список доступных разрешений
-//	private int currResolutionIndex = 0; //Текущее разрешение
+//	public float volume = 0; //Р“СЂРѕРјРєРѕСЃС‚СЊ
+//	public int quality = 0; //РљР°С‡РµСЃС‚РІРѕ
+//	public bool isFullscreen = false; //РџРѕР»РЅРѕСЌРєСЂР°РЅРЅС‹Р№ СЂРµР¶РёРј
+//	public AudioMixer audioMixer; //Р РµРіСѓР»СЏС‚РѕСЂ РіСЂРѕРјРєРѕСЃС‚Рё
+//	public Dropdown resolutionDropdown; //РЎРїРёСЃРѕРє СЃ СЂР°Р·СЂРµС€РµРЅРёСЏРјРё РґР»СЏ РёРіСЂС‹
+//	private Resolution[] resolutions; //РЎРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… СЂР°Р·СЂРµС€РµРЅРёР№
+//	private int currResolutionIndex = 0; //РўРµРєСѓС‰РµРµ СЂР°Р·СЂРµС€РµРЅРёРµ
 
-//	public void ChangeVolume(float val) //Изменение звука
+//	public void ChangeVolume(float val) //РР·РјРµРЅРµРЅРёРµ Р·РІСѓРєР°
 //	{
 //		volume = val;
 //	}
-//	public void ChangeResolution(int index) //Изменение разрешения
+//	public void ChangeResolution(int index) //РР·РјРµРЅРµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ
 //	{
 //		currResolutionIndex = index;
 //	}
-//	public void ChangeFullscreenMode(bool val) //Включение или отключение полноэкранного режима
+//	public void ChangeFullscreenMode(bool val) //Р’РєР»СЋС‡РµРЅРёРµ РёР»Рё РѕС‚РєР»СЋС‡РµРЅРёРµ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅРѕРіРѕ СЂРµР¶РёРјР°
 //	{
 //		isFullscreen = val;
 //	}
-//	public void ChangeQuality(int index) //Изменение качества
+//	public void ChangeQuality(int index) //РР·РјРµРЅРµРЅРёРµ РєР°С‡РµСЃС‚РІР°
 //	{
 //		quality = index;
 //	}
 
 //	public void SaveSettings()
 //	{
-//		audioMixer.SetFloat("MasterVolume", volume); //Изменение уровня громкости
-//		QualitySettings.SetQualityLevel(quality); //Изменение качества
-//		Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
-//		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
+//		audioMixer.SetFloat("MasterVolume", volume); //РР·РјРµРЅРµРЅРёРµ СѓСЂРѕРІРЅСЏ РіСЂРѕРјРєРѕСЃС‚Рё
+//		QualitySettings.SetQualityLevel(quality); //РР·РјРµРЅРµРЅРёРµ РєР°С‡РµСЃС‚РІР°
+//		Screen.fullScreen = isFullscreen; //Р’РєР»СЋС‡РµРЅРёРµ РёР»Рё РѕС‚РєР»СЋС‡РµРЅРёРµ РїРѕР»РЅРѕСЌРєСЂР°РЅРЅРѕРіРѕ СЂРµР¶РёРјР°
+//		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //РР·РјРµРЅРµРЅРёСЏ СЂР°Р·СЂРµС€РµРЅРёСЏ
 //	}
 
 //	public void AutoSettings()
 //	{
-//		resolutionDropdown.ClearOptions(); //Удаление старых пунктов
-//		resolutions = Screen.resolutions; //Получение доступных разрешений
-//		List<string> options = new List<string>(); //Создание списка со строковыми значениями
+//		resolutionDropdown.ClearOptions(); //РЈРґР°Р»РµРЅРёРµ СЃС‚Р°СЂС‹С… РїСѓРЅРєС‚РѕРІ
+//		resolutions = Screen.resolutions; //РџРѕР»СѓС‡РµРЅРёРµ РґРѕСЃС‚СѓРїРЅС‹С… СЂР°Р·СЂРµС€РµРЅРёР№
+//		List<string> options = new List<string>(); //РЎРѕР·РґР°РЅРёРµ СЃРїРёСЃРєР° СЃРѕ СЃС‚СЂРѕРєРѕРІС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё
 
-//		for (int i = 0; i < resolutions.Length; i++) //Поочерёдная работа с каждым разрешением
+//		for (int i = 0; i < resolutions.Length; i++) //РџРѕРѕС‡РµСЂС‘РґРЅР°СЏ СЂР°Р±РѕС‚Р° СЃ РєР°Р¶РґС‹Рј СЂР°Р·СЂРµС€РµРЅРёРµРј
 //		{
-//			string option = resolutions[i].width + " x " + resolutions[i].height; //Создание строки для списка
-//			options.Add(option); //Добавление строки в список
+//			string option = resolutions[i].width + " x " + resolutions[i].height; //РЎРѕР·РґР°РЅРёРµ СЃС‚СЂРѕРєРё РґР»СЏ СЃРїРёСЃРєР°
+//			options.Add(option); //Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚СЂРѕРєРё РІ СЃРїРёСЃРѕРє
 
-//			if (resolutions[i].Equals(Screen.currentResolution)) //Если текущее разрешение равно проверяемому
+//			if (resolutions[i].Equals(Screen.currentResolution)) //Р•СЃР»Рё С‚РµРєСѓС‰РµРµ СЂР°Р·СЂРµС€РµРЅРёРµ СЂР°РІРЅРѕ РїСЂРѕРІРµСЂСЏРµРјРѕРјСѓ
 //			{
-//				currResolutionIndex = i; //То получается его индекс
+//				currResolutionIndex = i; //РўРѕ РїРѕР»СѓС‡Р°РµС‚СЃСЏ РµРіРѕ РёРЅРґРµРєСЃ
 //			}
 //		}
 
-//		resolutionDropdown.AddOptions(options); //Добавление элементов в выпадающий список
-//		resolutionDropdown.value = currResolutionIndex; //Выделение пункта с текущим разрешением
-//		resolutionDropdown.RefreshShownValue(); //Обновление отображаемого значения
+//		resolutionDropdown.AddOptions(options); //Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РІ РІС‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє
+//		resolutionDropdown.value = currResolutionIndex; //Р’С‹РґРµР»РµРЅРёРµ РїСѓРЅРєС‚Р° СЃ С‚РµРєСѓС‰РёРј СЂР°Р·СЂРµС€РµРЅРёРµРј
+//		resolutionDropdown.RefreshShownValue(); //РћР±РЅРѕРІР»РµРЅРёРµ РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ
 //	}
 //}

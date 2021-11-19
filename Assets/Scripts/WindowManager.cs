@@ -10,19 +10,27 @@ public class WindowManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && openedWindows.Count > 0)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (openedWindows.Count > 1)
+            if (openedWindows.Count > 0)
             {
-                CloseWindow(openedWindows[openedWindows.Count - 1]);
+                if (openedWindows.Count > 1)
+                {
+                    CloseWindow(openedWindows[openedWindows.Count - 1]);
+                }
+                else
+                {
+                    Destroy(openedWindows[openedWindows.Count - 1].gameObject);
+                    openedWindows.Remove(openedWindows[openedWindows.Count - 1]);
+                }
             }
             else
             {
-                Destroy(openedWindows[openedWindows.Count - 1].gameObject);
-                openedWindows.Remove(openedWindows[openedWindows.Count - 1]);
+                ShowWindow("PauseMenu");
             }
         }
     }
+
     public void ShowWindow(string prefabName)
     {
         var prototype = Resources.Load<BaseWindow>(prefabName);
