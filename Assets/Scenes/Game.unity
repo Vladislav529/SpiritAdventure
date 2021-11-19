@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 37054619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1477683604}
   m_RootOrder: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 965cb1ba82a627d47ba2216a025586de, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0aea3335cd4db6f498d2f1dd72b19ce8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -510,7 +510,6 @@ MonoBehaviour:
   speed: 5
   runSpeed: 8
   jumpForce: 500
-  idleSprite: {fileID: 37054619}
   groundCheck: {fileID: 1505814538}
   groundRadius: 0.2
   whatIsGround:
@@ -590,7 +589,7 @@ Animator:
   m_GameObject: {fileID: 1477683603}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5a5a08bb840ea40308083ff1de3ec13a, type: 2}
+  m_Controller: {fileID: 9100000, guid: d2dd1411ca7a3e24d84d609e1b507689, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
