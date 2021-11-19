@@ -10,7 +10,6 @@ public class CharacterMovement : MonoBehaviour
     public float speed = 5f;
     public float runSpeed = 10f;
     public float jumpForce = 500f;
-    public GameObject idleSprite;
     
     
     bool facingRight = true;
@@ -24,14 +23,24 @@ public class CharacterMovement : MonoBehaviour
     private List<IInteractableObject> interactableObjects = new List<IInteractableObject>();
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
-    private static readonly int isJumping = Animator.StringToHash("isJumping");
-
+<<<<<<< Updated upstream
+    private static readonly int isWalking = Animator.StringToHash("isWalking");
     
+
+
 
     private void Start()
     {
         idleSprite.SetActive(true);
     }
+=======
+    private static readonly int isJumping = Animator.StringToHash("isJumping");
+    private static readonly int isRunning = Animator.StringToHash("isRunning");
+
+    
+
+ 
+>>>>>>> Stashed changes
     void FixedUpdate()
     {
         
@@ -77,8 +86,6 @@ public class CharacterMovement : MonoBehaviour
 
     void Movement()
     {
-        float yAxis = Input.GetAxis("Vertical");
-
         float xAxis = Input.GetAxis("Horizontal");
 
         if (!PlantClimb.isClimbing)
@@ -125,6 +132,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Animate()
     {
+        float xAxis = Input.GetAxis("Horizontal");
+
         if (grounded || PlantClimb.isClimbing)
         {
             animator.SetBool(isGrounded, true);
@@ -133,6 +142,27 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             animator.SetBool(isGrounded, false);
+        }
+
+<<<<<<< Updated upstream
+        if (Mathf.Abs(xAxis) > 0)
+        {
+            animator.SetBool(isWalking, true);
+        }
+        else
+        {
+            animator.SetBool(isWalking, false);
+=======
+        float xAxis = Input.GetAxis("Horizontal");
+
+        if(Mathf.Abs(xAxis) > 0)
+        {
+            animator.SetBool(isRunning, true);
+        }
+        else
+        {
+            animator.SetBool(isRunning, false);
+>>>>>>> Stashed changes
         }
     }
 
