@@ -12,12 +12,15 @@ public class OptionsWindow : BaseWindow
 {
     public float volume = 0; //Громкость
     public bool isFullscreen = false; //Полноэкранный режим
-	private int currResolutionIndex = 0; //Текущее разрешение
+	public int currResolutionIndex = 0; //Текущее разрешение
 
 	public AudioMixer audioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
     private Resolution[] resolutions; //Список доступных разрешений
 
+	public Toggle toggle;
+	public Dropdown dropdown;
+	public Slider slider;
 	public Button saveButton;
 	public Button exitButton;
 
@@ -50,46 +53,33 @@ public class OptionsWindow : BaseWindow
 
 	public void SaveSettings()
 	{
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath + "/Settings.dat");
-		SaveData data = new SaveData();
-		data.savedResolution = currResolutionIndex;
-		data.savedVolume = volume;
-		data.savedFullscreen = isFullscreen;
-		bf.Serialize(file, data);
-		file.Close();
+		print(currResolutionIndex);
+		print(isFullscreen);
+		print(volume);
+		PlayerPrefs.SetInt("currResolutionIndex", currResolutionIndex);
+		if (isFullscreen)
+        {
+			PlayerPrefs.SetInt("isFullscreen", 1);
+		}
+		else
+        {
+			PlayerPrefs.DeleteKey("isFullscreen");
+		}
+		PlayerPrefs.SetFloat("volume", volume);
+		PlayerPrefs.Save();
 		Debug.Log("Game data saved!");
 	}
 
 	public void LoadSettings()
 	{
-		if (File.Exists(Application.persistentDataPath + "/Settings.dat"))
-		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/Settings.dat", FileMode.Open);
-			SaveData data = (SaveData)bf.Deserialize(file);
-			file.Close();
-			currResolutionIndex = data.savedResolution;
-			volume = data.savedVolume;
-			isFullscreen = data.savedFullscreen;
-			audioMixer.SetFloat("Volume", volume); //Изменение уровня громкости
-			Screen.fullScreen = isFullscreen; //Включение или отключение полноэкранного режима
-			Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); //Изменения разрешения
-			Debug.Log("Game data loaded!");
-		}
-		else
-        {
-			Debug.LogError("There is no save data!");
-		}
+		currResolutionIndex = PlayerPrefs.GetInt("currResolutionIndex", currResolutionIndex);
+		isFullscreen = PlayerPrefs.HasKey("isFullscreen");
+		volume = PlayerPrefs.GetFloat("volume", volume);
+		dropdown.value = currResolutionIndex;
+		toggle.isOn = isFullscreen;
+		slider.value = volume;
+		Debug.Log("Game data loaded!");
 	}
-}
-
-[Serializable]
-public class SaveData
-{
-	public int savedResolution;
-	public float savedVolume;
-	public bool savedFullscreen;
 }
 
 //public class Options2 : BaseWindow

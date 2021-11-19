@@ -401,12 +401,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4311877241610565515}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4282555013941293492}
+        m_TargetAssemblyTypeName: OptionsWindow, Assembly-CSharp
+        m_MethodName: ChangeVolume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5726356729377642294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,8 +1303,12 @@ MonoBehaviour:
   closeButton: {fileID: 0}
   volume: 0
   isFullscreen: 0
+  currResolutionIndex: 0
   audioMixer: {fileID: 24100000, guid: f4a796aac57b6ef48bcc680333a02b21, type: 2}
   resolutionDropdown: {fileID: 7378511865964035318}
+  toggle: {fileID: 7378511864431229767}
+  dropdown: {fileID: 7378511865964035318}
+  slider: {fileID: 4678426211269834176}
   saveButton: {fileID: 2242085435020774463}
   exitButton: {fileID: 7378511864822316904}
 --- !u!1 &7378511864899141877
@@ -2070,7 +2086,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: Option B
 --- !u!1 &7378511865964035316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2196,7 +2212,7 @@ MonoBehaviour:
   m_CaptionImage: {fileID: 0}
   m_ItemText: {fileID: 7378511864324849023}
   m_ItemImage: {fileID: 0}
-  m_Value: 0
+  m_Value: 1
   m_Options:
     m_Options:
     - m_Text: Option A
@@ -2208,9 +2224,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4282555013941293492}
+      - m_Target: {fileID: 7378511864876931778}
         m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: ChangeResolution
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
