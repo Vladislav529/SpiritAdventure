@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class StartMenuWindow : BaseWindow
+public class PauseWindow : BaseWindow
 {
 	public Button startButton;
 	public Button optionsButton;
 	public Button quitButton;
 
 
-	public override void Awake() 
+	public override void Awake()
 	{
 		base.Awake();
 		startButton.onClick.AddListener(StartGame);
@@ -21,7 +21,7 @@ public class StartMenuWindow : BaseWindow
 
 	private void StartGame()
 	{
-		SceneManager.LoadScene("Game"); // LoadSceneMode.Additive
+		SceneManager.LoadScene("Game", LoadSceneMode.Additive); // LoadSceneMode.Additive
 		_windowManager.CloseAllWindow(this);
 	}
 	private void ShowOptions()

@@ -8,6 +8,13 @@ public class WindowManager : MonoBehaviour
     public GameObject windowParent;
     private List<BaseWindow> openedWindows = new List<BaseWindow>();
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseWindow(openedWindows[openedWindows.Count - 1]);
+        }
+    }
     public void ShowWindow(string prefabName)
     {
         var prototype = Resources.Load<BaseWindow>(prefabName);

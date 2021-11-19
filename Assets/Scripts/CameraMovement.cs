@@ -3,10 +3,18 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour
 {
-
+    public WindowManager windowManager;
     [Header("Set in Inspector")]
     public GameObject character;
     public GameObject camera;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            windowManager.ShowWindow("PauseMenu");
+        }
+    }
 
     private void LateUpdate()
     {

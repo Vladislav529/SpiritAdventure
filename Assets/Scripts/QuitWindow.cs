@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Quit : BaseWindow
+public class QuitWindow : BaseWindow
 {
     public Button menuButton;
 	public Button exitButton;
