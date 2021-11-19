@@ -1,21 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class holdingObject : MonoBehaviour, IInteractableObject
+public class holdingObject : InteractableObject
 {
     [Header("Set in Inspector")]
     // public GameObject thingWeHold;
-    public CharacterMovement character;
     public GameObject hand;
-    public float pickUpDistance = 10f;
 
 
     private bool isPickedUp = false;
 
     Rigidbody2D rigidbody;
 
-    public void Interaction()
+    public override void Interaction()
     {
         if (!isPickedUp)
         {
@@ -30,27 +29,33 @@ public class holdingObject : MonoBehaviour, IInteractableObject
     }
 
     public Vector3 position => this.transform.position;
+}
 
-    private void Update()
+
+public abstract class InteractableObject : MonoBehaviour
+{
+    public abstract void Interaction();
+
+    [SerializeField] private CharacterMovement character;
+    [SerializeField] private float pickUpDistance = 10f;
+
+    public Vector3 position => transform.position;
+    private bool _characterCanInteract;
+
+
+    protected void Update()
     {
-
-        if (Vector3.Distance(hand.transform.position, transform.position) <= pickUpDistance)
+        
+        var distanceWithCharacter = Vector3.Distance(character.transform.position, transform.position);
+        if (distanceWithCharacter <= pickUpDistance && !_characterCanInteract)
         {
+            _characterCanInteract = true;
             character.AddInteractableObject(this);
         }
         else
         {
+            _characterCanInteract = false;
             character.TryToRemoveInteractableObject(this);
         }
-        
     }
-
-}
-
-
-public interface IInteractableObject
-{
-    void Interaction();
-
-    Vector3 position { get; }
 }

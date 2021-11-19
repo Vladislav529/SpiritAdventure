@@ -20,7 +20,7 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public Animator animator;
 
-    private List<IInteractableObject> interactableObjects = new List<IInteractableObject>();
+    private List<InteractableObject> interactableObjects = new List<InteractableObject>();
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
     private static readonly int isWalking = Animator.StringToHash("isWalking");
@@ -55,17 +55,14 @@ public class CharacterMovement : MonoBehaviour
         isHolding = true;
     }
 
-    public void AddInteractableObject(IInteractableObject interactable)
+    public void AddInteractableObject(InteractableObject interactable)
     {
         interactableObjects.Add(interactable);
     }
 
-    public void TryToRemoveInteractableObject(IInteractableObject interactable) // sponsored by good method naming
+    public void TryToRemoveInteractableObject(InteractableObject interactable) // sponsored by good method naming
     {
-        if (interactableObjects.Contains(interactable))
-        {
-            interactableObjects.Remove(interactable);
-        }
+        interactableObjects.Remove(interactable);
     }
 
     void Movement()
@@ -144,8 +141,8 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             print("Input.GetKeyDown(KeyCode.E");
-            IInteractableObject selectedObject = null;
-            foreach(IInteractableObject obj in interactableObjects)
+            InteractableObject selectedObject = null;
+            foreach(InteractableObject obj in interactableObjects)
             {
                 if(selectedObject == null)
                 {
