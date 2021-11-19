@@ -81,15 +81,34 @@ public class OptionsWindow : BaseWindow
         {
 			Debug.LogError("There is no save data!");
 		}
+<<<<<<< HEAD
+=======
+		PlayerPrefs.SetFloat("volume", volume);
+		PlayerPrefs.Save();
+		Debug.Log("Game data saved!");
+>>>>>>> parent of fec0c56 (Options FIx)
 	}
 }
 
+<<<<<<< HEAD
 [Serializable]
 public class SaveData
 {
 	public int savedResolution;
 	public float savedVolume;
 	public bool savedFullscreen;
+=======
+	public void LoadSettings()
+	{
+		currResolutionIndex = PlayerPrefs.GetInt("currResolutionIndex", currResolutionIndex);
+		isFullscreen = PlayerPrefs.HasKey("isFullscreen");
+		volume = PlayerPrefs.GetFloat("volume", volume);
+		dropdown.value = currResolutionIndex;
+		toggle.isOn = isFullscreen;
+		slider.value = volume;
+		Debug.Log("Game data loaded!");
+	}
+>>>>>>> parent of fec0c56 (Options FIx)
 }
 
 //public class Options2 : BaseWindow
