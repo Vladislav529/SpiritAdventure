@@ -53,9 +53,6 @@ public class OptionsWindow : BaseWindow
 
 	public void SaveSettings()
 	{
-		print(currResolutionIndex);
-		print(isFullscreen);
-		print(volume);
 		PlayerPrefs.SetInt("currResolutionIndex", currResolutionIndex);
 		if (isFullscreen)
         {

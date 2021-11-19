@@ -410,7 +410,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4282555013941293492}
         m_TargetAssemblyTypeName: OptionsWindow, Assembly-CSharp
         m_MethodName: ChangeVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1022,9 +1022,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4282555013941293492}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+        m_TargetAssemblyTypeName: OptionsWindow, Assembly-CSharp
         m_MethodName: ChangeFullscreenMode
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2224,9 +2224,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7378511864876931778}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 4282555013941293492}
+        m_TargetAssemblyTypeName: OptionsWindow, Assembly-CSharp
+        m_MethodName: ChangeResolution
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
