@@ -19,11 +19,11 @@ public class CharacterMovement : MonoBehaviour
     public float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public Animator animator;
+    public GameObject idleSprite;
 
     private List<IInteractableObject> interactableObjects = new List<IInteractableObject>();
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
-<<<<<<< Updated upstream
     private static readonly int isWalking = Animator.StringToHash("isWalking");
     
 
@@ -33,14 +33,12 @@ public class CharacterMovement : MonoBehaviour
     {
         idleSprite.SetActive(true);
     }
-=======
     private static readonly int isJumping = Animator.StringToHash("isJumping");
     private static readonly int isRunning = Animator.StringToHash("isRunning");
 
     
 
  
->>>>>>> Stashed changes
     void FixedUpdate()
     {
         
@@ -144,7 +142,6 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool(isGrounded, false);
         }
 
-<<<<<<< Updated upstream
         if (Mathf.Abs(xAxis) > 0)
         {
             animator.SetBool(isWalking, true);
@@ -152,17 +149,6 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             animator.SetBool(isWalking, false);
-=======
-        float xAxis = Input.GetAxis("Horizontal");
-
-        if(Mathf.Abs(xAxis) > 0)
-        {
-            animator.SetBool(isRunning, true);
-        }
-        else
-        {
-            animator.SetBool(isRunning, false);
->>>>>>> Stashed changes
         }
     }
 
