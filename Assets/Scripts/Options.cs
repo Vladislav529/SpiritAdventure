@@ -8,7 +8,7 @@ using UnityEngine.UI; //Работа с интерфейсами
 using UnityEngine.SceneManagement; //Работа со сценами
 using UnityEngine.Audio; //Работа с аудио
 
-public class OptionsWindow : BaseWindow
+public class Options : BaseWindow
 {
     public float volume = 0; //Громкость
     public bool isFullscreen = false; //Полноэкранный режим
@@ -81,37 +81,15 @@ public class OptionsWindow : BaseWindow
         {
 			Debug.LogError("There is no save data!");
 		}
-<<<<<<< HEAD
-=======
-		PlayerPrefs.SetFloat("volume", volume);
-		PlayerPrefs.Save();
-		Debug.Log("Game data saved!");
-<<<<<<< HEAD
->>>>>>> parent of fec0c56 (Options FIx)
-=======
->>>>>>> parent of fec0c56 (Options FIx)
 	}
 }
 
-<<<<<<< HEAD
 [Serializable]
 public class SaveData
 {
 	public int savedResolution;
 	public float savedVolume;
 	public bool savedFullscreen;
-=======
-	public void LoadSettings()
-	{
-		currResolutionIndex = PlayerPrefs.GetInt("currResolutionIndex", currResolutionIndex);
-		isFullscreen = PlayerPrefs.HasKey("isFullscreen");
-		volume = PlayerPrefs.GetFloat("volume", volume);
-		dropdown.value = currResolutionIndex;
-		toggle.isOn = isFullscreen;
-		slider.value = volume;
-		Debug.Log("Game data loaded!");
-	}
->>>>>>> parent of fec0c56 (Options FIx)
 }
 
 //public class Options2 : BaseWindow

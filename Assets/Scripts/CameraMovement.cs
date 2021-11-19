@@ -8,6 +8,14 @@ public class CameraMovement : MonoBehaviour
     public GameObject character;
     public GameObject camera;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            windowManager.ShowWindow("PauseMenu");
+        }
+    }
+
     private void LateUpdate()
     {
         Vector3 characterPos = character.transform.position;
