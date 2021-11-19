@@ -12,7 +12,15 @@ public class WindowManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && openedWindows.Count > 0)
         {
-            CloseWindow(openedWindows[openedWindows.Count - 1]);
+            if (openedWindows.Count > 1)
+            {
+                CloseWindow(openedWindows[openedWindows.Count - 1]);
+            }
+            else
+            {
+                Destroy(openedWindows[openedWindows.Count - 1].gameObject);
+                openedWindows.Remove(openedWindows[openedWindows.Count - 1]);
+            }
         }
     }
     public void ShowWindow(string prefabName)
@@ -35,16 +43,6 @@ public class WindowManager : MonoBehaviour
         if (openedWindows.Count > 0)
         {
             ExpandWindow(openedWindows[openedWindows.Count - 1]);
-        }
-    }
-
-    public void CloseAllWindow(BaseWindow window)
-    {
-        Destroy(window.gameObject);
-        openedWindows.Remove(window);
-        while (openedWindows.Count > 0) {
-            Destroy(openedWindows[openedWindows.Count - 1]);
-            openedWindows.Remove(openedWindows[openedWindows.Count - 1]);
         }
     }
 
