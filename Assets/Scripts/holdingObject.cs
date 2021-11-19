@@ -17,7 +17,16 @@ public class holdingObject : MonoBehaviour, IInteractableObject
 
     public void Interaction()
     {
-        this.transform.SetParent(hand.transform);
+        if (!isPickedUp)
+        {
+            this.transform.SetParent(hand.transform);
+            isPickedUp = true;
+        }
+        else
+        {
+            this.transform.SetParent(null);
+            isPickedUp = false;
+        }
     }
 
     public Vector3 position => this.transform.position;
