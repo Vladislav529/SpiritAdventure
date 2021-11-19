@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,9 +21,12 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public Animator animator;
 
+    private List<IInteractableObject> interactableObjects = new List<IInteractableObject>();
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
     private static readonly int isJumping = Animator.StringToHash("isJumping");
+
+    
 
     private void Start()
     {
@@ -37,9 +41,45 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
+        Movement();
+
+        Animate();
+
+        CheckInteraction();
+    }
+
+
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+    void pickUp()
+    {
+        isHolding = true;
+    }
+
+    public void AddInteractableObject(IInteractableObject interactable)
+    {
+        interactableObjects.Add(interactable);
+    }
+
+    public void TryToRemoveInteractableObject(IInteractableObject interactable) // sponsored by good method naming
+    {
+        if (interactableObjects.Contains(interactable))
+        {
+            interactableObjects.Remove(interactable);
+        }
+    }
+
+    void Movement()
+    {
         float yAxis = Input.GetAxis("Vertical");
 
-        float xAxis = Input.GetAxis("Horizontal"); 
+        float xAxis = Input.GetAxis("Horizontal");
 
         if (!PlantClimb.isClimbing)
         {
@@ -77,13 +117,14 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-       
-
         if (xAxis > 0 && !facingRight)
             Flip();
         else if (xAxis < 0 && facingRight)
             Flip();
+    }
 
+    void Animate()
+    {
         if (grounded || PlantClimb.isClimbing)
         {
             animator.SetBool(isGrounded, true);
@@ -93,21 +134,29 @@ public class CharacterMovement : MonoBehaviour
         {
             animator.SetBool(isGrounded, false);
         }
-
-
     }
 
 
-    void Flip()
+    void CheckInteraction()
     {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
-
-    void pickUp()
-    {
-        isHolding = true;
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            print("Input.GetKeyDown(KeyCode.E");
+            IInteractableObject selectedObject = null;
+            foreach(IInteractableObject obj in interactableObjects)
+            {
+                if(selectedObject == null)
+                {
+                    selectedObject = obj;
+                    continue;
+                }
+                if (Vector3.Distance(this.transform.position, obj.position) < Vector3.Distance(this.transform.position, selectedObject.position))
+                    selectedObject = obj;
+            }
+            if (selectedObject != null)
+            {
+                selectedObject.Interaction();
+            }
+        }
     }
 }
