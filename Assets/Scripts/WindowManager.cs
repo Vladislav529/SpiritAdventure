@@ -14,21 +14,18 @@ public class WindowManager : MonoBehaviour
         {
             if (openedWindows.Count > 0)
             {
-                if (openedWindows.Count > 1)
-                {
-                    CloseWindow(openedWindows[openedWindows.Count - 1]);
-                }
-                else
-                {
-                    Destroy(openedWindows[openedWindows.Count - 1].gameObject);
-                    openedWindows.Remove(openedWindows[openedWindows.Count - 1]);
-                }
+                GetLastOpenedWindow().HandleEscapePressed();
             }
             else
             {
                 ShowWindow("PauseMenu");
             }
         }
+    }
+
+    private BaseWindow GetLastOpenedWindow()
+    {
+        return openedWindows[openedWindows.Count - 1];
     }
 
     public void ShowWindow(string prefabName)
@@ -39,7 +36,7 @@ public class WindowManager : MonoBehaviour
         window.closeEvent.AddListener(CloseWindow);
         if (openedWindows.Count > 0)
         {
-            CollapseWindow(openedWindows[openedWindows.Count - 1]);
+            CollapseWindow(GetLastOpenedWindow());
         }
         openedWindows.Add(window);
     }
@@ -50,7 +47,7 @@ public class WindowManager : MonoBehaviour
         openedWindows.Remove(window);
         if (openedWindows.Count > 0)
         {
-            ExpandWindow(openedWindows[openedWindows.Count - 1]);
+            ExpandWindow(GetLastOpenedWindow());
         }
     }
 

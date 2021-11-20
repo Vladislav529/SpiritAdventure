@@ -95,7 +95,7 @@ public class OptionsWindow : BaseWindow
 
 		audioMixer.SetFloat("MasterVolume", volume); 
 		Screen.fullScreen = isFullscreen; 
-		Screen.SetResolution(rsl[currResolutionIndex].width, rsl[currResolutionIndex].height, isFullscreen); 
+	    //Screen.SetResolution(rsl[currResolutionIndex].width, rsl[currResolutionIndex].height, isFullscreen); 
 
 		Debug.Log("Game data loaded!");
 	}
