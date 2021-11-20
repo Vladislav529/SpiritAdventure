@@ -12,7 +12,6 @@ public class CharacterMovement : MonoBehaviour
     public float jumpForce = 700f;
     
     
-    bool facingRight = true;
     bool grounded = false;
     bool isHolding = false;
     public Transform groundCheck;

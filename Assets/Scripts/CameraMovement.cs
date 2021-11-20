@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 characterPos = character.transform.position;
+        Vector3 characterPos = character.transform.position;    
 
         camera.transform.position = new Vector3(characterPos.x, characterPos.y, camera.transform.position.z);
     }
