@@ -9,7 +9,7 @@ public class CharacterMovement : Interactor
     [Header("Set in Inspector")]
     public float speed = 5f;
     public float runSpeed = 10f;
-    public float jumpForce = 500f;
+    public float jumpForce = 700f;
     
     
     bool facingRight = true;
