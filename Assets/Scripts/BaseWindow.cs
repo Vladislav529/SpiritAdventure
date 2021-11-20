@@ -26,4 +26,9 @@ public class BaseWindow : MonoBehaviour
 			closeButton.onClick.AddListener(() => closeEvent.Invoke(this));
 		}
 	}
+
+	public virtual void HandleEscapePressed()
+	{
+		_windowManager.CloseWindow(this);
+	}
 }

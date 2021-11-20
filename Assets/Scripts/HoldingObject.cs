@@ -14,16 +14,23 @@ public class HoldingObject : InteractableObject
 
     Rigidbody2D rigidbody;
 
+    private void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+    }
+
     public override void Interaction()
     {
         if (!isPickedUp)
         {
+            rigidbody.isKinematic = true;
             this.transform.SetParent(hand.transform);
             this.transform.position = hand.transform.position;
             isPickedUp = true;
         }
         else
         {
+            rigidbody.isKinematic = false;
             this.transform.SetParent(null);
             isPickedUp = false;
         }

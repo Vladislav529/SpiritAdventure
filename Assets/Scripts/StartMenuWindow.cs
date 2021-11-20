@@ -31,4 +31,6 @@ public class StartMenuWindow : BaseWindow
 	{
 		_windowManager.ShowWindow("QuitMenu");
 	}
+
+	public override void HandleEscapePressed() { }
 }
