@@ -12,7 +12,7 @@ public class blockPowerUp : MonoBehaviour
     public float powerUpDistance = 5;
 
     [HideInInspector]
-    private bool powUp = false;
+    public bool powUp = false;
 
     private void Awake()
     {
