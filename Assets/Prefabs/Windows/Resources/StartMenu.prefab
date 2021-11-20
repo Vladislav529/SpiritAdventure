@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3279782684427940211}
   - component: {fileID: 5245380600556663505}
+  - component: {fileID: 6392883194009667701}
   m_Layer: 0
   m_Name: StartMenu
   m_TagString: Untagged
@@ -263,6 +264,14 @@ MonoBehaviour:
   startButton: {fileID: 4998021272741210454}
   optionsButton: {fileID: 905948883081709702}
   quitButton: {fileID: 3997274792613367640}
+--- !u!222 &6392883194009667701
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4706053094060729788}
+  m_CullTransparentMesh: 1
 --- !u!1 &6037208576438691620
 GameObject:
   m_ObjectHideFlags: 0
