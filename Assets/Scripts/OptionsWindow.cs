@@ -16,7 +16,8 @@ public class OptionsWindow : BaseWindow
 
 	public AudioMixer audioMixer; //Регулятор громкости
     public Dropdown resolutionDropdown; //Список с разрешениями для игры
-    private Resolution[] resolutions; //Список доступных разрешений
+    private Resolution[] rsl; //Список доступных разрешений
+	List<string> resolutions;
 
 	public Toggle toggle;
 	public Dropdown dropdown;
@@ -45,24 +46,15 @@ public class OptionsWindow : BaseWindow
 		LoadSettings();
 		saveButton.onClick.AddListener(SaveSettings);
 		exitButton.onClick.AddListener(ReturnToMain);
-		resolutionDropdown.ClearOptions(); //Удаление старых пунктов
-		resolutions = Screen.resolutions; //Получение доступных разрешений
-		List<string> options = new List<string>(); //Создание списка со строковыми значениями
 
-		for (int i = 0; i < resolutions.Length; i++) //Поочерёдная работа с каждым разрешением
+		resolutions = new List<string>();
+		rsl = Screen.resolutions;
+		foreach (var i in rsl)
 		{
-			string option = resolutions[i].width + " x " + resolutions[i].height; //Создание строки для списка
-			options.Add(option); //Добавление строки в список
-
-			if (resolutions[i].Equals(Screen.currentResolution)) //Если текущее разрешение равно проверяемому
-			{
-				currResolutionIndex = i; //То получается его индекс
-			}
+			resolutions.Add(i.width + "x" + i.height);
 		}
-
-		resolutionDropdown.AddOptions(options); //Добавление элементов в выпадающий список
-		resolutionDropdown.value = currResolutionIndex; //Выделение пункта с текущим разрешением
-		resolutionDropdown.RefreshShownValue(); //Обновление отображаемого значения
+		dropdown.ClearOptions();
+		dropdown.AddOptions(resolutions);
 	}
 
 	private void ReturnToMain()
@@ -103,7 +95,7 @@ public class OptionsWindow : BaseWindow
 
 		audioMixer.SetFloat("MasterVolume", volume); 
 		Screen.fullScreen = isFullscreen; 
-		Screen.SetResolution(Screen.resolutions[currResolutionIndex].width, Screen.resolutions[currResolutionIndex].height, isFullscreen); 
+		Screen.SetResolution(rsl[currResolutionIndex].width, rsl[currResolutionIndex].height, isFullscreen); 
 
 		Debug.Log("Game data loaded!");
 	}
