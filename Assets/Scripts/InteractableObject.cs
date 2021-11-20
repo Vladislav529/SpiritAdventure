@@ -15,7 +15,7 @@ public abstract class InteractableObject : MonoBehaviour
 	private List<Interactor> _interactors; 
 
 	public Vector3 position => transform.position;
-	private bool _characterCanInteract;
+	private Dictionary<Interactor, bool> interactionFlags = new Dictionary<Interactor, bool>();
 
 
 	private void Start()
@@ -35,18 +35,29 @@ public abstract class InteractableObject : MonoBehaviour
 			var distanceWithCharacter = Vector3.Distance(interactor.transform.position, transform.position);
 			if (distanceWithCharacter <= pickUpDistance)
 			{
-				if (_characterCanInteract)
-					return;
-				_characterCanInteract = true;
+				if (InteractorCanInteract(interactor))
+					continue;
+				interactionFlags[interactor] = true;
 				interactor.AddInteractableObject(this);
 			}
 			else
 			{
-				if (!_characterCanInteract)
-					return;
-				_characterCanInteract = false;
+				if (!InteractorCanInteract(interactor))
+					continue;
+				interactionFlags[interactor] = false;
 				interactor.TryToRemoveInteractableObject(this);
 			}
 		}
+	}
+
+	private bool InteractorCanInteract(Interactor interactor)
+	{
+		if (!interactionFlags.TryGetValue(interactor, out bool canInteract))
+		{
+			interactionFlags[interactor] = false;
+			return false;
+		}
+
+		return interactionFlags[interactor];
 	}
 }
