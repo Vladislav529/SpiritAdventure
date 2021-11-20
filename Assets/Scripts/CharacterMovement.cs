@@ -24,6 +24,7 @@ public class CharacterMovement : MonoBehaviour
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
     private static readonly int isWalking = Animator.StringToHash("isWalking");
+    private static readonly int isHoldingObj = Animator.StringToHash("isHolding");
 
     void FixedUpdate()
     {
