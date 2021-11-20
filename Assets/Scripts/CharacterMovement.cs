@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : Interactor
 {
 
     [Header("Set in Inspector")]
@@ -20,7 +20,6 @@ public class CharacterMovement : MonoBehaviour
     public LayerMask whatIsGround;
     public Animator animator;
 
-    private List<InteractableObject> interactableObjects = new List<InteractableObject>();
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
     private static readonly int isWalking = Animator.StringToHash("isWalking");
@@ -33,13 +32,12 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         Movement();
 
         Animate();
-
-        CheckInteraction();
     }
 
     /*
@@ -55,16 +53,6 @@ public class CharacterMovement : MonoBehaviour
     void pickUp()
     {
         isHolding = true;
-    }
-
-    public void AddInteractableObject(InteractableObject interactable)
-    {
-        interactableObjects.Add(interactable);
-    }
-
-    public void TryToRemoveInteractableObject(InteractableObject interactable) // sponsored by good method naming
-    {
-        interactableObjects.Remove(interactable);
     }
 
     void Movement()
@@ -138,7 +126,7 @@ public class CharacterMovement : MonoBehaviour
     }
 
 
-    void CheckInteraction()
+    protected override void CheckInteraction()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -159,5 +147,27 @@ public class CharacterMovement : MonoBehaviour
                 selectedObject.Interaction();
             }
         }
+    }
+}
+
+public abstract class Interactor : MonoBehaviour
+{
+    protected List<InteractableObject> interactableObjects = new List<InteractableObject>();
+
+    public void AddInteractableObject(InteractableObject interactable)
+    {
+        interactableObjects.Add(interactable);
+    }
+
+    public void TryToRemoveInteractableObject(InteractableObject interactable) // sponsored by good method naming
+    {
+        interactableObjects.Remove(interactable);
+    }
+
+    protected abstract void CheckInteraction();
+
+    protected virtual void Update()
+    {
+        CheckInteraction();
     }
 }
