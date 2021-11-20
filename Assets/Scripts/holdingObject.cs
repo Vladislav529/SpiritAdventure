@@ -19,6 +19,7 @@ public class holdingObject : InteractableObject
         if (!isPickedUp)
         {
             this.transform.SetParent(hand.transform);
+            this.transform.position = hand.transform.position;
             isPickedUp = true;
         }
         else
