@@ -42,7 +42,7 @@ public class CharacterMovement : MonoBehaviour
         CheckInteraction();
     }
 
-
+    /*
     void Flip()
     {
         facingRight = !facingRight;
@@ -50,6 +50,7 @@ public class CharacterMovement : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+    */
 
     void pickUp()
     {
@@ -105,11 +106,11 @@ public class CharacterMovement : MonoBehaviour
                 }
             }
         }
-
+        /*
         if (xAxis > 0 && !facingRight)
             Flip();
         else if (xAxis < 0 && facingRight)
-            Flip();
+            Flip(); */ 
     }
 
     void Animate()
