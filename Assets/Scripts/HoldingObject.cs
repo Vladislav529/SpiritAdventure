@@ -8,6 +8,7 @@ public class HoldingObject : InteractableObject
     [Header("Set in Inspector")]
     // public GameObject thingWeHold;
     public GameObject hand;
+    public short id;
 
 
     private bool isPickedUp = false;
