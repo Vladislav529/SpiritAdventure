@@ -1332,6 +1332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUp1: {fileID: 785086989}
   powerUp2: {fileID: 1333841078}
+  spawned: 0
 --- !u!114 &603865508
 MonoBehaviour:
   m_ObjectHideFlags: 0
