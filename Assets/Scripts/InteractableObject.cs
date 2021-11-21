@@ -21,8 +21,8 @@ public abstract class InteractableObject : MonoBehaviour
 	private void Start()
 	{
 		_interactors = new List<Interactor>();
-		foreach (var go in SceneManager.GetActiveScene()
-			.GetRootGameObjects())
+		var sceneRootObjects = SceneManager.GetSceneByName("Game").GetRootGameObjects();
+		foreach (var go in sceneRootObjects)
 		{
 			_interactors.AddRange(go.GetComponentsInChildren<Interactor>());
 		}
