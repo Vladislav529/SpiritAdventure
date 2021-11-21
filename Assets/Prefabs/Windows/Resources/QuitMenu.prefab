@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3279782684427940211}
   - component: {fileID: 7366060632822273297}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: QuitMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 3147094056066823437}
   - component: {fileID: 3089058373451251058}
   - component: {fileID: 3326434326261118448}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
