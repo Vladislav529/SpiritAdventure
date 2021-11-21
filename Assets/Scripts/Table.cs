@@ -7,7 +7,7 @@ public class Table : Interactor
 	public GameObject powerUp2;
 
 	[HideInInspector]
-	private bool spawned = false;
+	public bool spawned = false;
     private void Awake()
     {
 		powerUp1.SetActive(false);

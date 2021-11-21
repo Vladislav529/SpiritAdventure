@@ -16,11 +16,20 @@ public class Dialog : MonoBehaviour
     }
     private void Update()
     {
-        if (Vector3.Distance(this.transform.position, character.transform.position) < dialogDistance)
+        if (!this.GetComponent<Table>().spawned)
         {
-            dialog.SetActive(true);
+            if (Vector3.Distance(this.transform.position, character.transform.position) < dialogDistance)
+            {
+                dialog.SetActive(true);
+            }
+            else
+            {
+                dialog.SetActive(false);
+            }
         }
         else
+        {
             dialog.SetActive(false);
+        }
     }
 }
