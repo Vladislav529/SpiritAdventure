@@ -1204,7 +1204,7 @@ MonoBehaviour:
   powerUp2: {fileID: 1333841078}
   spritePower: {fileID: 368599426}
   spritePowerless: {fileID: 1882665089}
-  powerUpDistance: 1
+  powerUpDistance: 2
   powUp: 0
 --- !u!1 &603865503
 GameObject:
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   powerUp2: {fileID: 1333841078}
   spritePower: {fileID: 993342292}
   spritePowerless: {fileID: 156642725}
-  powerUpDistance: 1
+  powerUpDistance: 2
   powUp: 0
 --- !u!1 &752559872
 GameObject:
