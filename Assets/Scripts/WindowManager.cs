@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class WindowManager : MonoBehaviour
 {
-    public GameObject windowParent;
     private List<BaseWindow> openedWindows = new List<BaseWindow>();
-
+    [SerializeField] private Image _bgLayer;
+    [SerializeField] private RectTransform _windowLayer;
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -31,7 +31,7 @@ public class WindowManager : MonoBehaviour
     public void ShowWindow(string prefabName)
     {
         var prototype = Resources.Load<BaseWindow>(prefabName);
-        var window = GameObject.Instantiate<BaseWindow>(prototype, windowParent.transform);
+        var window = GameObject.Instantiate<BaseWindow>(prototype, _windowLayer.transform);
         window.Init(this);
         window.closeEvent.AddListener(CloseWindow);
         if (openedWindows.Count > 0)
@@ -59,5 +59,26 @@ public class WindowManager : MonoBehaviour
     public void CollapseWindow(BaseWindow window)
     {
         window.gameObject.SetActive(false);
+    }
+
+    private static readonly Color transparentColor = new Color(0, 0, 0, 0);
+    
+    public void SetBackgroundImage(string imagePath, Color color)
+    {
+        if (string.IsNullOrEmpty(imagePath))
+        {
+            _bgLayer.sprite = null;
+            _bgLayer.color = transparentColor;
+        }
+        else
+        {
+            _bgLayer.sprite = Resources.Load<Sprite>(imagePath);
+            _bgLayer.color = color;
+        }
+    }
+    
+    public void SetBackgroundImage(string imagePath)
+    {
+        SetBackgroundImage(imagePath, _bgLayer.color);
     }
 }
