@@ -18,11 +18,17 @@ public class CharacterMovement : Interactor
     public float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public Animator animator;
+    public Animator elementAnimator;
 
+
+    [HideInInspector]
+    public short elementId;
     
     private static readonly int isGrounded = Animator.StringToHash("isGrounded");
     private static readonly int isWalking = Animator.StringToHash("isWalking");
     private static readonly int isHoldingObj = Animator.StringToHash("isHolding");
+    private static readonly int element = Animator.StringToHash("elementId");
+
 
     void FixedUpdate()
     {
@@ -122,6 +128,8 @@ public class CharacterMovement : Interactor
         {
             animator.SetBool(isWalking, false);
         }
+
+        elementAnimator.SetInteger(element, elementId);
     }
 
 

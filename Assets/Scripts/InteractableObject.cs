@@ -6,7 +6,7 @@ public abstract class InteractableObject : MonoBehaviour
 {
 	public abstract void Interaction();
 
-	[SerializeField] private CharacterMovement character;
+	[SerializeField] public CharacterMovement character;
 	[SerializeField] private float pickUpDistance = 10f;
 
 	private List<Interactor> _interactors; 
