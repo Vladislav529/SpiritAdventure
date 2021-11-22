@@ -1168,6 +1168,7 @@ MonoBehaviour:
   pickUpDistance: 3
   hand: {fileID: 1240217167}
   id: 0
+  locked: 0
 --- !u!212 &415899254
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6724,6 +6725,7 @@ MonoBehaviour:
   pickUpDistance: 10
   hand: {fileID: 1240217167}
   id: 3
+  locked: 0
 --- !u!50 &785086993
 Rigidbody2D:
   serializedVersion: 4
@@ -8196,6 +8198,7 @@ MonoBehaviour:
   pickUpDistance: 10
   hand: {fileID: 1240217167}
   id: 3
+  locked: 0
 --- !u!50 &1333841082
 Rigidbody2D:
   serializedVersion: 4
@@ -9554,6 +9557,7 @@ MonoBehaviour:
   pickUpDistance: 3
   hand: {fileID: 1240217167}
   id: 1
+  locked: 0
 --- !u!61 &1890957627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14425,6 +14429,7 @@ MonoBehaviour:
   pickUpDistance: 3
   hand: {fileID: 1240217167}
   id: 2
+  locked: 0
 --- !u!212 &1922295180
 SpriteRenderer:
   m_ObjectHideFlags: 0

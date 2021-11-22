@@ -29,14 +29,14 @@ public class HoldingObject : InteractableObject
             this.transform.SetParent(hand.transform);
             this.transform.position = hand.transform.position;
             isPickedUp = true;
-            this.GetComponent<ParticleSystem>().Stop(true);
+            this.GetComponent<ParticleSystem>().Stop();
         }
         else
         {
             rigidbody.isKinematic = false;
             this.transform.SetParent(null);
             isPickedUp = false;
-            this.GetComponent<ParticleSystem>().Stop(false);
+            this.GetComponent<ParticleSystem>().Play();
         }
     }
 

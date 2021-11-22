@@ -21,7 +21,8 @@ public class Table : Interactor
 			if (interactableObject is HoldingObject)
 			{
 				holdingCount++;
-				(interactableObject as HoldingObject).locked = true;
+				// (interactableObject as HoldingObject).locked = true;
+				// (interactableObject as HoldingObject).GetComponent<ParticleSystem>().Stop();
 			}
 		}
 
