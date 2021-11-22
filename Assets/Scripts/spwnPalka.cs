@@ -5,23 +5,24 @@ using UnityEngine;
 public class spwnPalka : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    public GameObject powerBox1;
-    public GameObject powerBox2;
     public GameObject palka;
+    public GameObject character;
+    public float spellDistance = 6f;
 
-
+    
     private void Awake()
-    {
+    { 
         palka.SetActive(false);
     }
     private void Update()
     {
-        if (powerBox1.GetComponent<blockPowerUp>().powUp == true && powerBox2.GetComponent<blockPowerUp>().powUp == true)
+        if (Vector3.Distance(character.transform.position, transform.position) < spellDistance
+            && Input.GetKeyDown(KeyCode.E)
+            && character.GetComponent<CharacterMovement>().elementId == 2)
+
         {
             palka.SetActive(true);
         }
-        print("1 " + powerBox1.GetComponent<blockPowerUp>().powUp);
-        print("2 " + powerBox2.GetComponent<blockPowerUp>().powUp);
 
     }
 }
