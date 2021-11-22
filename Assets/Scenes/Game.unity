@@ -6214,6 +6214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9f0ec722a54b4fae7c8cf69b1637e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suitableObjects:
+  - {fileID: 1922295179}
+  - {fileID: 1890957626}
+  - {fileID: 415899253}
   powerUp1: {fileID: 785086989}
   powerUp2: {fileID: 1333841078}
   spawned: 0

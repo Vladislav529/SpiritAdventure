@@ -36,7 +36,8 @@ public class HoldingObject : InteractableObject
             rigidbody.isKinematic = false;
             this.transform.SetParent(null);
             isPickedUp = false;
-            this.GetComponent<ParticleSystem>().Play();
+            if (!locked)
+                this.GetComponent<ParticleSystem>().Play();
         }
     }
 

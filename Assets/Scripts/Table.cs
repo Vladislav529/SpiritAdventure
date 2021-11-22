@@ -1,30 +1,26 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Table : Interactor
 {
+	[SerializeField]
+	private List<HoldingObject> suitableObjects; 
+
 	[Header("Set in Inspector")]
 	public GameObject powerUp1;
 	public GameObject powerUp2;
 
 	[HideInInspector]
 	public bool spawned = false;
-    private void Awake()
-    {
+	private void Awake()
+	{
 		powerUp1.SetActive(false);
 		powerUp2.SetActive(false);
-    }
-    protected override void CheckInteraction()
+	}
+	protected override void CheckInteraction()
 	{
-		int holdingCount = 0;
-		foreach (var interactableObject in interactableObjects)
-		{
-			if (interactableObject is HoldingObject)
-			{
-				holdingCount++;
-				// (interactableObject as HoldingObject).locked = true;
-				// (interactableObject as HoldingObject).GetComponent<ParticleSystem>().Stop();
-			}
-		}
+		int holdingCount = interactableObjects.AsEnumerable().Count(i => suitableObjects.Contains(i));
 
 		if (holdingCount == 3 && !spawned)
 		{
@@ -41,6 +37,18 @@ public class Table : Interactor
 			powerUp1.transform.position = pos1;
 			powerUp2.transform.position = pos2;
 			spawned = true;
+		}
+	}
+	public override void AddInteractableObject(InteractableObject interactable)
+	{
+		if (suitableObjects.Contains(interactable))
+		{
+			base.AddInteractableObject(interactable);
+			if (interactable is HoldingObject holdingObject)
+            {
+				holdingObject.locked = true;
+				holdingObject.GetComponent<ParticleSystem>().Stop();
+			}
 		}
 	}
 }
