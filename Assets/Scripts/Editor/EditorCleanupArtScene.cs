@@ -19,7 +19,7 @@ public class EditorCleanupArtScene : MonoBehaviour
 			var childrenComponents = gameObject.GetComponentsInChildren<Component>();
 			foreach (var c in childrenComponents)
 			{
-				if (c is Transform || c is SpriteRenderer)
+				if (c is Transform || c is SpriteRenderer || c is Camera)
 					continue;
 				var cParent = c.gameObject;
 				DestroyImmediate(c);
