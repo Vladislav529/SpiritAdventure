@@ -19,7 +19,10 @@ public class Table : Interactor
 		foreach (var interactableObject in interactableObjects)
 		{
 			if (interactableObject is HoldingObject)
+			{
 				holdingCount++;
+				(interactableObject as HoldingObject).locked = true;
+			}
 		}
 
 		if (holdingCount == 3 && !spawned)
