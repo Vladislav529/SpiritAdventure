@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,6 +50,8 @@ public class EditorCleanupArtScene : MonoBehaviour
 					(c as SpriteRenderer).enabled = visible;
 			}
 		}
+
+		EditorSceneManager.SaveScene(SceneManager.GetActiveScene());
 	}
 	
 	[MenuItem("Tools/Show colliders on design scene")]
