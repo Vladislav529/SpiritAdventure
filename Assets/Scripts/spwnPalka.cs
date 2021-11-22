@@ -17,7 +17,7 @@ public class spwnPalka : MonoBehaviour
     }
     public void Update()
     {
-        if (Vector3.Distance(character.transform.position, transform.position) < spellDistance
+        if (Vector3.Distance(character.transform.position, palka.transform.position) < spellDistance
             && Input.GetKeyDown(KeyCode.E)
             && character.GetComponent<CharacterMovement>().elementId == 2)
 
