@@ -161,7 +161,7 @@ public abstract class Interactor : MonoBehaviour
 {
     protected List<InteractableObject> interactableObjects = new List<InteractableObject>();
 
-    public void AddInteractableObject(InteractableObject interactable)
+    public virtual void AddInteractableObject(InteractableObject interactable)
     {
         interactableObjects.Add(interactable);
     }

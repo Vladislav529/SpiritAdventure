@@ -9,6 +9,7 @@ public class HoldingObject : InteractableObject
     // public GameObject thingWeHold;
     public GameObject hand;
     public short id;
+    public bool locked;
 
 
     private bool isPickedUp = false;
@@ -22,18 +23,21 @@ public class HoldingObject : InteractableObject
 
     public override void Interaction()
     {
-        if (!isPickedUp)
+        if (!isPickedUp && !locked)
         {
             rigidbody.isKinematic = true;
             this.transform.SetParent(hand.transform);
             this.transform.position = hand.transform.position;
             isPickedUp = true;
+            this.GetComponent<ParticleSystem>().Stop();
         }
         else
         {
             rigidbody.isKinematic = false;
             this.transform.SetParent(null);
             isPickedUp = false;
+            if (!locked)
+                this.GetComponent<ParticleSystem>().Play();
         }
     }
 
