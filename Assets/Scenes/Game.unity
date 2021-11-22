@@ -7391,7 +7391,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690074092}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 29.21, y: -7.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8439,7 +8439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057558558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 3.59, z: 0}
+  m_LocalPosition: {x: 113.15, y: 10.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8459,7 +8459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 1477683605}
   pickUpDistance: 10
-  elementId: 1
+  elementId: 2
 --- !u!1 &1061307678
 GameObject:
   m_ObjectHideFlags: 0
@@ -8472,6 +8472,7 @@ GameObject:
   - component: {fileID: 1061307680}
   - component: {fileID: 1061307681}
   - component: {fileID: 1061307682}
+  - component: {fileID: 1061307683}
   m_Layer: 0
   m_Name: oduvan
   m_TagString: Untagged
@@ -8583,6 +8584,21 @@ MonoBehaviour:
   powerUp1: {fileID: 690074092}
   powerUp2: {fileID: 483055723}
   dialogDistance: 5
+--- !u!114 &1061307683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061307678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450852a8c365c8e4da0a7802563129c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elemelon: {fileID: 1057558558}
+  powerUp1: {fileID: 690074092}
+  powerUp2: {fileID: 483055723}
 --- !u!1 &1081524960
 GameObject:
   m_ObjectHideFlags: 0
@@ -10402,7 +10418,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 2.56, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1595615784
 GameObject:
