@@ -21,6 +21,8 @@ public class WindowManager : MonoBehaviour
                 ShowWindow("PauseMenu");
             }
         }
+        if (Input.GetKeyDown(KeyCode.L))
+            ShowWindow("EndGameWindow");
     }
 
     private BaseWindow GetLastOpenedWindow()
