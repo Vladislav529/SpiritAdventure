@@ -10,17 +10,19 @@ public class spwnPalka : MonoBehaviour
     public float spellDistance = 6f;
 
     
-    private void Awake()
+    public void Awake()
     { 
         palka.SetActive(false);
+        print("Awake");
     }
-    private void Update()
+    public void Update()
     {
         if (Vector3.Distance(character.transform.position, transform.position) < spellDistance
             && Input.GetKeyDown(KeyCode.E)
             && character.GetComponent<CharacterMovement>().elementId == 2)
 
         {
+            print("Yeah");
             palka.SetActive(true);
         }
 

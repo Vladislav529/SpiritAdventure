@@ -21,7 +21,7 @@ public class StartMenuWindow : BaseWindow
 
 	private void StartGame()
 	{
-		SceneManager.LoadScene("Art", LoadSceneMode.Additive);
+		SceneManager.LoadScene("Art");
 		SceneManager.LoadScene("Game", LoadSceneMode.Additive);
 		_windowManager.CloseWindow(this);
 		_windowManager.SetBackgroundImage(null);

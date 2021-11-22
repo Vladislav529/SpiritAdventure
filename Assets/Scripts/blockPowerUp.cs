@@ -42,6 +42,6 @@ public class blockPowerUp : MonoBehaviour
                 spritePowerless.SetActive(false);
             }
         }
-        print(powUp);
+        //print(powUp);
     }
 }
