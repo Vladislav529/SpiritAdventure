@@ -24,6 +24,7 @@ public class spwnPalka : MonoBehaviour
         {
             print("Yeah");
             palka.SetActive(true);
+            palka.GetComponent<SpriteRenderer>().enabled = true;
         }
 
     }
