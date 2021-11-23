@@ -28,7 +28,7 @@ public class WindowManager : MonoBehaviour
         }
     }
 
-    private BaseWindow GetLastOpenedWindow()
+    public BaseWindow GetLastOpenedWindow()
     {
         return openedWindows[openedWindows.Count - 1];
     }
