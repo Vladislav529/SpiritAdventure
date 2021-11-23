@@ -7990,6 +7990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 813808907}
   - component: {fileID: 813808908}
+  - component: {fileID: 813808909}
   m_Layer: 0
   m_Name: spawn
   m_TagString: Untagged
@@ -8027,6 +8028,25 @@ MonoBehaviour:
   palka: {fileID: 1593512569}
   character: {fileID: 1477683603}
   spellDistance: 6
+--- !u!95 &813808909
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813808906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4bc0b772e14aec43af8e08bea5f8c39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &968831513
 GameObject:
   m_ObjectHideFlags: 0
@@ -8868,7 +8888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bgLayer: {fileID: 0}
-  _windowLayer: {fileID: 0}
+  _windowLayer: {fileID: 1098217857}
 --- !u!1 &1110104952
 GameObject:
   m_ObjectHideFlags: 0
@@ -12708,7 +12728,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 12
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}

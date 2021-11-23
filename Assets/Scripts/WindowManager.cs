@@ -67,6 +67,7 @@ public class WindowManager : MonoBehaviour
     
     public void SetBackgroundImage(string imagePath, Color color)
     {
+        print("Set Background 2");
         if (string.IsNullOrEmpty(imagePath))
         {
             _bgLayer.sprite = null;
@@ -81,6 +82,7 @@ public class WindowManager : MonoBehaviour
     
     public void SetBackgroundImage(string imagePath)
     {
+        print("Set Background");
         SetBackgroundImage(imagePath, _bgLayer.color);
     }
 }
