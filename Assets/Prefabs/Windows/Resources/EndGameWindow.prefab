@@ -246,8 +246,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be918c25eaa4ded4888424d12077dfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  girl: {fileID: 0}
-  endDistance: 3
   _bgLayer: {fileID: 0}
-  _windowLayer: {fileID: 0}
+  _windowLayer: {fileID: 3279782684427940211}

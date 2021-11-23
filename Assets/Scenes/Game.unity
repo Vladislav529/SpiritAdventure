@@ -13630,8 +13630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e708226a7b96e54691615d03449213a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 1477683603}
-  girl: {fileID: 1868020518}
   _bgLayer: {fileID: 0}
   _windowLayer: {fileID: 814558258}
 --- !u!1 &1110104952
@@ -21120,6 +21118,7 @@ GameObject:
   - component: {fileID: 1868020520}
   - component: {fileID: 1868020519}
   - component: {fileID: 1868020521}
+  - component: {fileID: 1868020522}
   m_Layer: 0
   m_Name: girl
   m_TagString: Untagged
@@ -21211,6 +21210,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1868020522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868020518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679a4b0c0f62c2443af6d0123bf4f0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 1477683603}
+  windowManager: {fileID: 1098217858}
 --- !u!1 &1882665089
 GameObject:
   m_ObjectHideFlags: 0
