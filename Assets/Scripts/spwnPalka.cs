@@ -26,9 +26,13 @@ public class spwnPalka : MonoBehaviour
                 palka.GetComponent<SpriteRenderer>().enabled = true;
                 windowManager.CloseWindow(window: windowManager.GetLastOpenedWindow());
             }
+            else if (Vector3.Distance(character.transform.position, palka.transform.position) > spellDistance)
+            {
+                windowManager.CloseWindow(window: windowManager.GetLastOpenedWindow());
+            }
             else if (!isHuntUse)
             {
-                windowManager.ShowWindow("HuntUse");
+                windowManager.ShowWindow("HintUse");
                 isHuntUse = true;
             }
         }
