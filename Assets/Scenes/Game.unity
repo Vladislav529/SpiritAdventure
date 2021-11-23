@@ -21223,6 +21223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1477683603}
+  girl: {fileID: 1868020518}
   windowManager: {fileID: 1098217858}
 --- !u!1 &1882665089
 GameObject:
