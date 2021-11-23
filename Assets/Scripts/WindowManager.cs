@@ -2,12 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class WindowManager : MonoBehaviour
 {
     private List<BaseWindow> openedWindows = new List<BaseWindow>();
+    public GameObject character;
+    public GameObject girl;
+    private float endDistance = 3f;
+
     [SerializeField] private Image _bgLayer;
     [SerializeField] private RectTransform _windowLayer;
+
+    [System.Obsolete]
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -21,8 +29,15 @@ public class WindowManager : MonoBehaviour
                 ShowWindow("PauseMenu");
             }
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Vector3.Distance(character.transform.position, girl.transform.position) < endDistance)
+        {
             ShowWindow("EndGameWindow");
+            //Thread.Sleep(5000);
+            SceneManager.LoadScene("Main");
+            _ = SceneManager.UnloadScene("Art");
+            _ = SceneManager.UnloadScene("Game");
+            ShowWindow("StartMenu");
+        }
     }
 
     private BaseWindow GetLastOpenedWindow()
